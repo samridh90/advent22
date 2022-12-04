@@ -90,5 +90,5 @@ func main() {
 	fmt.Println(computeRucksackPriorities(input))
 	fmt.Println("Part2")
 	fmt.Println(computeRucksackPriorities2(test))
-	// fmt.Println(computeRucksackPriorities2(input))
+	fmt.Println(computeRucksackPriorities2(input))
 }
