@@ -23,9 +23,12 @@ func readFile(filename string) ([]string, error) {
 func isDistinctWindow(slice string) bool {
 	windowSet := make(map[string]bool)
 	for i := 0; i < len(slice); i++ {
+		if _, ok := windowSet[string(slice[i])]; ok {
+			return false
+		}
 		windowSet[string(slice[i])] = true
 	}
-	return len(windowSet) == len(slice)
+	return true
 }
 
 func firstMarkerForSeq(input []string) []int {
