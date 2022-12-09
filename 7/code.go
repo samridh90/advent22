@@ -1,26 +1,12 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
+
+	"github.com/samridh90/advent22/shared"
 )
-
-func readFile(filename string) ([]string, error) {
-	var lines []string
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	return lines, scanner.Err()
-}
 
 type Dir struct {
 	dirs  map[string]Dir
@@ -160,8 +146,8 @@ func testBench2(input []string) {
 }
 
 func main() {
-	test, _ := readFile("test.txt")
-	input, _ := readFile("input.txt")
+	test, _ := shared.ReadFile("./7/test.txt")
+	input, _ := shared.ReadFile("./7/input.txt")
 	fmt.Println("Part1")
 	testBench(test)
 	testBench(input)

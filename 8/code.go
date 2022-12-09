@@ -1,25 +1,11 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
+
+	"github.com/samridh90/advent22/shared"
 )
-
-func readFile(filename string) ([]string, error) {
-	var lines []string
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	return lines, scanner.Err()
-}
 
 func parseMatrix(input []string) [][]int {
 	result := [][]int{}
@@ -146,9 +132,9 @@ func findMaxViewingScore(matrix [][]int) int {
 }
 
 func main() {
-	test, _ := readFile("test.txt")
+	test, _ := shared.ReadFile("./8/test.txt")
 	testMatrix := parseMatrix(test)
-	input, _ := readFile("input.txt")
+	input, _ := shared.ReadFile("./8/input.txt")
 	inputMatrix := parseMatrix(input)
 	fmt.Println("Part1")
 	fmt.Println(findVisibleTrees(testMatrix))

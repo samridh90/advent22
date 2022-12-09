@@ -1,24 +1,10 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
+
+	"github.com/samridh90/advent22/shared"
 )
-
-func readFile(filename string) ([]string, error) {
-	var lines []string
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	return lines, scanner.Err()
-}
 
 func isDistinctWindow(slice string) bool {
 	windowSet := make(map[string]bool)
@@ -62,8 +48,8 @@ func firstMarkerForMessage(input []string) []int {
 }
 
 func main() {
-	test, _ := readFile("test.txt")
-	input, _ := readFile("input.txt")
+	test, _ := shared.ReadFile("./6/test.txt")
+	input, _ := shared.ReadFile("./6/input.txt")
 	fmt.Println("Part1")
 	fmt.Println(firstMarkerForSeq(test))
 	fmt.Println(firstMarkerForSeq(input))

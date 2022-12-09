@@ -1,25 +1,11 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strings"
+
+	"github.com/samridh90/advent22/shared"
 )
-
-func readFile(filename string) ([]string, error) {
-	var lines []string
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	return lines, scanner.Err()
-}
 
 func computeScore(input []string) int {
 	individualScore := map[string]int{
@@ -74,8 +60,8 @@ func computeScore2(input []string) int {
 }
 
 func main() {
-	test, _ := readFile("test.txt")
-	input, _ := readFile("input.txt")
+	test, _ := shared.ReadFile("./2/test.txt")
+	input, _ := shared.ReadFile("./2/input.txt")
 	fmt.Println("Part1")
 	fmt.Println(computeScore(test))
 	fmt.Println(computeScore(input))

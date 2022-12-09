@@ -1,27 +1,12 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"sort"
 	"strconv"
+
+	"github.com/samridh90/advent22/shared"
 )
-
-func readFile(filename string) ([]string, error) {
-	var lines []string
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	lines = append(lines, "")
-	return lines, scanner.Err()
-}
 
 func computeMaxCalories(input []string, top int) int64 {
 	allMax := []int64{}
@@ -52,8 +37,10 @@ func computeMaxCalories(input []string, top int) int64 {
 }
 
 func main() {
-	test, _ := readFile("test.txt")
-	input, _ := readFile("input.txt")
+	test, _ := shared.ReadFile("./1/test.txt")
+	test = append(test, "")
+	input, _ := shared.ReadFile("./1/input.txt")
+	input = append(input, "")
 	fmt.Println("Part1")
 	fmt.Println(computeMaxCalories(test, 1))
 	fmt.Println(computeMaxCalories(input, 1))

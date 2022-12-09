@@ -1,11 +1,11 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
+
+	"github.com/samridh90/advent22/shared"
 )
 
 type Seq struct {
@@ -18,20 +18,6 @@ func newSeq(input string) *Seq {
 	start, _ := strconv.ParseInt(parts[0], 0, 64)
 	end, _ := strconv.ParseInt(parts[1], 0, 64)
 	return &Seq{start: int(start), end: int(end)}
-}
-
-func readFile(filename string) ([]string, error) {
-	var lines []string
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	return lines, scanner.Err()
 }
 
 func doesSeqContainAnother(seq1, seq2 *Seq) bool {
@@ -78,8 +64,8 @@ func checkOverlap2(input []string) int {
 }
 
 func main() {
-	test, _ := readFile("test.txt")
-	input, _ := readFile("input.txt")
+	test, _ := shared.ReadFile("./4/test.txt")
+	input, _ := shared.ReadFile("./4/input.txt")
 	fmt.Println("Part1")
 	fmt.Println(checkOverlap(test))
 	fmt.Println(checkOverlap(input))

@@ -1,25 +1,11 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"unicode"
+
+	"github.com/samridh90/advent22/shared"
 )
-
-func readFile(filename string) ([]string, error) {
-	var lines []string
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	return lines, scanner.Err()
-}
 
 func computePriority(item rune) int {
 	if unicode.IsUpper(item) {
@@ -83,8 +69,8 @@ func computeRucksackPriorities2(input []string) int {
 }
 
 func main() {
-	test, _ := readFile("test.txt")
-	input, _ := readFile("input.txt")
+	test, _ := shared.ReadFile("./3/test.txt")
+	input, _ := shared.ReadFile("./3/input.txt")
 	fmt.Println("Part1")
 	fmt.Println(computeRucksackPriorities(test))
 	fmt.Println(computeRucksackPriorities(input))
