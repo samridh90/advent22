@@ -155,10 +155,10 @@ func runSimulation2(monkeys []monkey, numRounds int) int64 {
 
 func main() {
 	files := []string{"./11/test.txt", "./11/input.txt"}
-	for i := 0; i < len(files); i++ {
-		test, _ := shared.ReadFile(files[i])
+	for _, file := range files {
+		test, _ := shared.ReadFile(file)
 		monkeys := parseMonkeys(test)
-		fmt.Println(files[i])
+		fmt.Println(file)
 		fmt.Println(runSimulation(monkeys, 20))
 		monkeys = parseMonkeys(test)
 		fmt.Println(runSimulation2(monkeys, 10000))
