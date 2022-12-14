@@ -23,7 +23,7 @@ const parsePairs = (input: string[]): Pair[] => {
   return result;
 }
 
-const comparePairs = (first: Data | undefined, second: Data | undefined, level: number): Result => {
+const comparePairs = (first: Data | undefined, second: Data | undefined): Result => {
   // const spaces = Array(level).join(" ");
   // console.log(spaces, `- Compare ${util.inspect(first)} vs ${util.inspect(second)}`);
   if (typeof first === "number" && typeof second === "number") {
@@ -72,7 +72,7 @@ const comparePairs = (first: Data | undefined, second: Data | undefined, level: 
   const pairs = parsePairs(contents);
   console.log("Part1");
   const result = pairs
-    .map((pair, index) => ({result: comparePairs(pair.first, pair.second, 0), index: index + 1}))
+    .map((pair, index) => ({result: comparePairs(pair.first, pair.second), index: index + 1}))
     .filter((intermediate) => intermediate.result === "right")
     .map(({index}) => index)
     .reduce((acc, cur) => acc + cur, 0);
@@ -86,7 +86,7 @@ const comparePairs = (first: Data | undefined, second: Data | undefined, level: 
     // [[6]] will come after [[2]], add 1 to its count
     let count = index + 1;
     allPackets.forEach(packet => {
-      const order = comparePairs(dividerPacket, packet, 0);
+      const order = comparePairs(dividerPacket, packet);
       if (order === "wrong") {
         count++;
       }
