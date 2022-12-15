@@ -56,7 +56,7 @@ const comparePairs = (first: Data | undefined, second: Data | undefined): Result
     first = typeof first === "number" ? [first] : first;
     second = typeof second === "number" ? [second] : second;
     for (let i = 0; i < Math.max(first.length, second.length); i++) {
-      const result = comparePairs(first[i], second[i], level + 1);
+      const result = comparePairs(first[i], second[i]);
       if (result === "equal") {
         continue
       } else {
